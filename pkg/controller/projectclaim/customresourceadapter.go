@@ -129,3 +129,28 @@ func (c *CustomResourceAdapter) EnsureProjectReferenceExists() error {
 	}
 	return nil
 }
+
+func (c *CustomResourceAdapter) EnsureProjectClaimState(state) error {
+	if c.projectClaim.Status.State == state {
+		return nil
+	}
+
+	if state == gcpv1alphav1.ClaimStatusPending {
+		if c.projectClaim.Status.State != "" {
+			return nil
+		}
+	} 
+
+	if state == gcpv1alphav1.ClaimStatusPendingProject {
+		if c.projectClaim.Status.State != gcpv1alpha1.ClaimStatusPending {
+			return nil
+		}
+	}
+
+	c.projectClaim.Status.State = state
+	err = c.client.Status().Update(context.TODO(), projectClaim)
+	if err != nil {
+		c.logger.Error(err, "Failed to update ProjectClaim state")
+		return err
+	}
+}
