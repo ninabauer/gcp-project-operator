@@ -12,7 +12,7 @@ require (
 	github.com/go-logr/zapr v0.1.0 // indirect
 	github.com/go-openapi/spec v0.19.2
 	github.com/golang/groupcache v0.0.0-20191002201903-404acd9df4cc // indirect
-	github.com/golang/mock v1.4.0
+	github.com/golang/mock v1.4.1
 	github.com/google/go-cmp v0.4.0
 	github.com/google/uuid v1.0.0
 	github.com/googleapis/gnostic v0.3.1 // indirect

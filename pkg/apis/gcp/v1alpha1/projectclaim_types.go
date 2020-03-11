@@ -60,6 +60,8 @@ const (
 type ClaimStatus string
 
 const (
+	// ClaimStatusPendingProject pending project status for a claim
+	ClaimStatusPendingProject ClaimStatus = "PendingProject"
 	// ClaimStatusPending pending status for a claim
 	ClaimStatusPending ClaimStatus = "Pending"
 	// ClaimStatusReady ready status for a claim
